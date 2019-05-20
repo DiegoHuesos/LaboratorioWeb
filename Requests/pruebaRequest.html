@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+    <header>
+        <title>Pobando requests</title>
+    </header>
+
+    <body>
+        <h1>API IDIOMAS</h1>
+
+        <p id="oli"></p>
+
+        <script>
+                var api;
+                var lo= prompt(" Casilla: ");
+                var xhttp= new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(xhttp.readyState == 4 && xhttp.status == 200){
+                        //document.getElementById("oli").innerHTML = xhttp.getAllResponseHeaders;
+                        //document.getElementById("oli").innerHTML = xhttp.responseText;
+                        
+                        api=JSON.parse(xhttp.responseText);
+                        console.log(Object.keys(api));
+                        var idiomas=Object.keys(api);
+                        var valIdiom=Object.values(api);
+
+                        for (const key in api) {
+                            if (object.hasOwnProperty(key)) {
+                                const element = object[key];
+                                
+                            }
+                        }
+                        
+                        
+                        console.log(idiomas[lo]);
+                        console.log(valIdiom[lo]);
+
+                        document.getElementById("oli").innerHTML = idiomas[lo] + "<br>";
+                        var keys = Object.keys(valIdiom[lo]);
+                        var val = Object.values(valIdiom[lo]);
+                        for(i=0; i<keys.length; i++)
+                            document.getElementById("oli").innerHTML += keys[i] + " : " + val[i] + "<br>" ;
+                        
+                            
+
+                        //console.log(api.Afrikanns.descuento);
+                        /*
+                        for(i =0; i< idiomas.length; i++){
+                            document.getElementById("oli").innerHTML += idiomas[i] +"<br>";
+                        }
+                        //document.getElementById("oli").innerHTML = idiomas;
+                        
+                        /*
+                        Object.keys(idiomas).forEach(key => {
+                            let value = idiomas[key];
+                        //use key and value here
+                        });
+                    
+                        /*array.forEach(element => {
+                            
+                        });
+                        */
+                    }
+                };
+                xhttp.open("GET","https://apiidiomas.firebaseapp.com/idiomas.json" , true);
+                xhttp.send();
+
+                //console.log(api.Africanns.profesor);
+            </script>
+    </body>
+</html>
